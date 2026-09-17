@@ -2,7 +2,7 @@
 
 Este projeto consiste em um pipeline de dados simples (ETL) que processa informações de vendas e uma API construída com FastAPI para disponibilizar os dados processados em formato JSON. Toda a aplicação está configurada para rodar em um contêiner Docker.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **Python 3.14**
 * **Pandas**: Para extração, transformação e carga (ETL) dos dados.
@@ -10,7 +10,7 @@ Este projeto consiste em um pipeline de dados simples (ETL) que processa informa
 * **Uvicorn**: Servidor ASGI para rodar a aplicação FastAPI.
 * **Docker**: Para conteinerização da aplicação.
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 .
