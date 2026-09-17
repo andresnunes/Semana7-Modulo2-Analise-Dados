@@ -1,0 +1,37 @@
+# Imagem base
+FROM python:3.14-slim
+
+# Local interno da Imagem Customizada para o aplicativo
+# É igual a :
+    # mkdir app -> Cria um arquivo dentro do linux
+    # cd app    -> Entra em um arquivo
+WORKDIR /app
+
+# Copia os arquivos externos para dentro do Imagem Customizada
+# Copia do ./requirements.txt para a pasta app/requirements.txt
+COPY requirements.txt .
+
+# Executa um comando python dentro da imagem, esse comando é executado quando o Container é rodado
+# Executa como um shell/terminal do linux
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia os arquivos externos para dentro do Imagem Customizada
+# Copia do ./etl.py para a pasta app/etl.py
+COPY etl.py .
+
+# Copia a pasta do ./sample_data.py para a pasta app/sample_data.py
+COPY sample_data ./sample_data
+
+# Coloca valore padrão para as variáveis de ambiente internas da Imagem
+# ENV AWS_REGION=us-east-1 \
+#     LOCAL_MODE=false \
+#     PYTHONUNBUFFERED=1
+
+# É o Comando de execução de uma Imagem Docker quando ela vira Container 
+# CMD permite que eu rode outro comando que não "python etl.py"
+CMD ["python", "etl.py"]  
+
+# ENTRYPOINT permite que eu rode o comando "python etl.py" com argumentos
+# python etl.py --test
+# Python e outras linguagens aceitam argumentos de entrada para executar o programa
+ENTRYPOINT ["python", "etl.py"]
