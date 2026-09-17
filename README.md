@@ -38,6 +38,12 @@ Rode o contêiner:
 docker run -p 8000:8000 vendas-api
 ```
 
+Contrua a imagem e o banco pelo docker compose
+```bash
+docker compose up -d
+```
+
+
 **Acesse a API:**
 
 Swagger UI (Documentação): http://localhost:8000/docs

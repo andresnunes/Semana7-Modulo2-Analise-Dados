@@ -1,0 +1,33 @@
+services:
+  db: # Container 
+    image: postgres:latest # nome da imagem base do container
+    container_name: postgres_db # nome do container a ser gerado
+    restart: always # comportamento a cada execução do comando "docker compose up", nesse caso o container é reiniciado a cada execução
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: vendas_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data_docker
+
+  app: # Container 2 
+    build: . # Build da imagem seguida da execução da imagem, evita usar uma imagem defasada
+    container_name: vendas_app
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on: # esperar o db terminar para executar o app
+      - db
+    environment:
+      # Variáveis de ambiente para o app conectar no banco no futuro
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=admin
+      - DB_PASSWORD=adminpassword
+      - DB_NAME=vendas_db
+
+# volume criado do banco de dados
+volumes:
+  postgres_data:
