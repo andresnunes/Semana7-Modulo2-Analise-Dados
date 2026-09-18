@@ -1,13 +1,15 @@
 # Imagem base
-FROM python:3.14-slim
+FROM python:3.14
 
 # Local interno da Imagem Customizada para o aplicativo
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copia os arquivos externos para dentro da Imagem Customizada
+# Primeiro vem a origem e em seguida o destino
 COPY requirements.txt .
 
 # Instala as dependências (pandas, fastapi, uvicorn)
+# Executa um comando como um terminal linux, acontece dentro do container
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia os scripts python para dentro da imagem

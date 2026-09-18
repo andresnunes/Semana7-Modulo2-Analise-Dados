@@ -1,0 +1,35 @@
+# ===========================================================================
+# terraform.tfvars.example — MODELO DE VALORES (arquivo de exemplo)
+# ===========================================================================
+# Este arquivo é só um MODELO. O Terraform NÃO lê arquivos ".example".
+#
+# Como usar:
+#   1. Copie este arquivo para "terraform.tfvars":
+#        copy terraform.tfvars.example terraform.tfvars   (PowerShell/CMD)
+#        cp   terraform.tfvars.example terraform.tfvars   (Linux/macOS)
+#   2. Edite o terraform.tfvars com os seus valores.
+#
+# O terraform.tfvars não deve ser commitado no Git (boa prática, mesmo sem
+# segredos aqui): cada pessoa tem os próprios valores. Já este .example
+# pode ir para o Git, para servir de guia.
+#
+# Cada linha "nome = valor" preenche uma variável declarada em variables.tf.
+# ===========================================================================
+
+# Região da AWS ("us-east-1" = EUA, "sa-east-1" = São Paulo).
+aws_region = "us-east-1"
+
+# Nome do bucket: troque por um nome seu. Precisa ser único em toda a AWS.
+# Dica: inclua seu nome ou uma data, ex.: "andre-senai-bucket-2026".
+bucket_name = "meu-bucket-simples-001"
+
+# true = guarda versões antigas dos arquivos.
+enable_versioning = true
+
+# true = "terraform destroy" apaga o bucket mesmo com arquivos dentro.
+force_destroy = true
+
+# Etiquetas para organizar o bucket na AWS.
+tags = {
+  Project = "meu-bucket-simples"
+}

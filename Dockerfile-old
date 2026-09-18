@@ -1,5 +1,5 @@
 # Imagem base
-FROM python:3.14-slim
+FROM python:3.14
 
 # Local interno da Imagem Customizada para o aplicativo
 # É igual a :
